@@ -1,0 +1,27 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<div class="menu-container">
+    <h1>Všechny restaurace</h1>
+    {% if not restaurants %}
+        <p>Je nám líto, žádná restaurace momentálně nerozváží :/</p>
+    {% else %}
+        <div class="restaurants-grid">
+            {% for restaurant in restaurants %}
+            <div class="restaurant-card">
+                <a href="{{ url_for('view_menu', restaurant_name=restaurant.name) }}">
+                    <img src="{{ restaurant.image_url }}" alt="{{ restaurant.name }}" class="restaurant-image">
+                    <div class="restaurant-info">
+                        <h2>{{ restaurant.name }}</h2>
+                        <p>{{ restaurant.description }}</p>
+                        <div class="details">
+                            <span>⭐ {{ restaurant.rating }}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

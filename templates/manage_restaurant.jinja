@@ -1,0 +1,44 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Správa jídel</h1>
+
+    <!-- Formulář pro přidání nového jídla -->
+    <form method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="add_item" value="true" />
+        <label for="item_name">Název jídla</label>
+        <input type="text" id="item_name" name="item_name" placeholder="Zadejte název jídla" required />
+
+        <label for="item_description">Popis jídla</label>
+        <textarea id="item_description" name="item_description" placeholder="Zadejte popis jídla" rows="4" required></textarea>
+
+        <label for="item_price">Cena (Kč)</label>
+        <input type="number" id="item_price" name="item_price" placeholder="Zadejte cenu" required />
+
+        <label for="item_image">Fotka jídla</label>
+        <input type="file" id="item_image" name="item_image" accept="image/*" />
+
+        <button type="submit">Přidat jídlo</button>
+    </form>
+
+    <!-- Seznam existujících jídel -->
+    <h2>Nabízená jídla</h2>
+    <ul>
+        {% for item in restaurant_items %}
+        <li>
+            <h3>{{ item.item_name }}</h3>
+            <p>{{ item.item_description }}</p>
+            <p><strong>Cena:</strong> {{ item.item_price }} Kč</p>
+            {% if item.item_image %}
+            <img src="{{ url_for('static', filename='uploads/' ~ item.item_image.split('/')[-1]) }}" alt="{{ item.item_name }}" style="max-width: 150px;">
+            {% endif %}
+            <form method="POST">
+                <input type="hidden" name="delete_item" value="{{ item.item_name }}" />
+                <button type="submit">Smazat</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

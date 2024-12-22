@@ -1,0 +1,102 @@
+{% extends 'base.jinja' %}
+{% block title %}Přidat Restauraci{% endblock %}
+{% block content %}
+<h1>Přidat Novou Restauraci</h1>
+
+<!-- Formulář pro přidání restaurace -->
+<form method="POST" enctype="multipart/form-data" id="restaurant-form">
+    <label for="name">Název restaurace:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="description">Popis:</label>
+    <textarea id="description" name="description" rows="4" required></textarea>
+
+    <label for="image">Nahrát obrázek restaurace:</label>
+    <input type="file" id="image" name="image" accept="image/*">
+
+    <h3>Přidat Jídla</h3>
+    <div id="meal-inputs">
+        <!-- Dynamická pole pro přidávání jídel -->
+        <div class="meal">
+            <input type="text" placeholder="Název jídla" class="meal-name" required>
+            <input type="text" placeholder="Popis jídla" class="meal-description" required>
+            <input type="number" placeholder="Cena (Kč)" class="meal-price" required>
+            <input type="file" class="meal-image" accept="image/*" required>
+            <button type="button" class="remove-meal">Odebrat</button>
+        </div>
+    </div>
+    <button type="button" id="add-meal">Přidat další jídlo</button>
+
+    <button type="submit" id="submit">Přidat Restauraci</button>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const addMealButton = document.getElementById('add-meal');
+    const mealInputs = document.getElementById('meal-inputs');
+
+    // Funkce pro přidání nového pole jídla
+    addMealButton.addEventListener('click', function() {
+        const mealDiv = document.createElement('div');
+        mealDiv.classList.add('meal');
+        mealDiv.innerHTML = `
+            <input type="text" placeholder="Název jídla" class="meal-name" required>
+            <input type="text" placeholder="Popis jídla" class="meal-description" required>
+            <input type="number" placeholder="Cena (Kč)" class="meal-price" required>
+            <input type="file" class="meal-image" accept="image/*" required>
+            <button type="button" class="remove-meal">Odebrat</button>
+        `;
+        mealInputs.appendChild(mealDiv);
+
+        // Přidání event listeneru pro nové tlačítko Odebrat
+        mealDiv.querySelector('.remove-meal').addEventListener('click', function() {
+            mealDiv.remove();
+        });
+    });
+
+    // Funkce pro odebrání pole jídla
+    mealInputs.addEventListener('click', function(event) {
+        if (event.target.classList.contains('remove-meal')) {
+            event.target.parentElement.remove();
+        }
+    });
+
+    // Funkce pro odeslání formuláře
+    const form = document.getElementById('restaurant-form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const meals = [];
+        const mealFiles = [];
+
+        document.querySelectorAll('.meal').forEach((meal, index) => {
+            const name = meal.querySelector('.meal-name').value;
+            const description = meal.querySelector('.meal-description').value;
+            const price = meal.querySelector('.meal-price').value;
+            const image = meal.querySelector('.meal-image').files[0];
+
+            meals.push({ name, description, price, imageName: image.name });
+            mealFiles.push({ file: image, index });
+        });
+
+        // Přidání JSON dat o jídlech
+        formData.append('meals', JSON.stringify(meals));
+
+        // Přidání souborů
+        mealFiles.forEach((mealFile, i) => {
+            formData.append(`meal_image_${i}`, mealFile.file);
+        });
+
+        // Odeslání dat na server
+        fetch('', { method: 'POST', body: formData })
+            .then(response => {
+                if (response.ok) {
+                    alert('Restaurace a jídla úspěšně přidány!');
+                    location.reload();
+                }
+            });
+    });
+});
+</script>
+{% endblock %}

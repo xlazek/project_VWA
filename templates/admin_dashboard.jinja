@@ -1,0 +1,70 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<div id="admin-dashboard-page">
+    <h1 class="page-title">Admin Dashboard</h1>
+
+    <div class="dashboard-section">
+        <h2 class="section-title">Čekající restaurace</h2>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Jméno restaurace</th>
+                    <th>Popis</th>
+                    <th>Akce</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for restaurant in pending_restaurants %}
+                <tr>
+                    <td data-label="ID">{{ restaurant.id }}</td>
+                    <td data-label="Jméno restaurace">{{ restaurant.name }}</td>
+                    <td data-label="Popis">{{ restaurant.description }}</td>
+                    <td data-label="Akce" class="admin-actions">
+                        <form method="POST" action="{{ url_for('admin_dashboard') }}" style="display:inline;">
+                            <input type="hidden" name="approve_restaurant" value="{{ restaurant.name }}">
+                            <button type="submit" class="btn-view">Schválit</button>
+                        </form>
+                        <form method="POST" action="{{ url_for('admin_dashboard') }}" style="display:inline;">
+                            <input type="hidden" name="reject_restaurant" value="{{ restaurant.name }}">
+                            <button type="submit" class="btn-delete">Odmítnout</button>
+                        </form>
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="dashboard-section">
+        <h2 class="section-title">Seznam poslíčků</h2>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Jméno</th>
+                    <th>Email</th>
+                    <th>Akce</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for courier in couriers %}
+                <tr>
+                    <td data-label="ID">{{ courier.id }}</td>
+                    <td data-label="Jméno">{{ courier.username }}</td>
+                    <td data-label="Email">{{ courier.email }}</td>
+                    <td data-label="Akce" class="admin-actions">
+                        <form method="POST" style="display:inline;">
+                            <input type="hidden" name="delete_courier" value="{{ courier.id }}">
+                            <button type="submit" class="btn-delete">Smazat</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,1185 @@
+/* Resetování výchozích stylů */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Základní styly */
+body {
+    background-color: #ffffff; /* Světle šedé pozadí */
+    color: #333; /* Tmavě šedý text */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navigace */
+header {
+    background-color: #fff; /* Bílá */
+    border-bottom: 2px solid #ddd; /* Jemná šedá linka */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0.5rem 0;
+}
+
+/* Hlavní sekce pro rozvržení do dvou sloupců */
+.main-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 90vh;
+    padding: 2rem 8rem; /* Snížené odsazení pro posun doleva */
+    background-color: #ffffff;
+}
+
+/* Levý sloupec: text a vyhledávací pole */
+.main-section .content {
+    max-width: 42%; /* Zvětšená šířka pro text a vyhledávací pole */
+    text-align: left;
+}
+
+.main-section h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.main-section p {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.main-section .search-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.main-section input[type="text"] {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 350px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-section button {
+    padding: 0.8rem 1.5rem;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.main-section button:hover {
+    background-color: #219150;
+}
+
+/* Pravý sloupec: obrázek */
+.main-section .image {
+    max-width: 50%;
+    text-align: right;
+}
+
+.main-section .image img {
+    max-width: 90%;
+    border-radius: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.login-button{
+    background-color: #333;
+}
+
+.logo h1 {
+    color: #27ae60; /* Zelená */
+    font-size: 1.5rem;
+    justify-items: start;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333; /* Šedá */
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #27ae60; /* Zelená */
+}
+/* Styl tlačítka Přihlášení */
+nav ul li a.login-button {
+    background-color: #333; /* Tmavě šedá */
+    color: #fff; /* Bílé písmo */
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center; /* Zarovnání textu na střed */
+}
+
+/* Hover efekt tlačítka */
+nav ul li a.login-button:hover {
+    background-color: #555; /* Světlejší šedá na hover */
+}
+
+/* Přizpůsobení pro mobilní menu */
+@media (max-width: 768px) {
+    nav ul li a.login-button {
+        width: 100%; /* Tlačítko bude zabírat celou šířku */
+        display: block; /* Blokové zobrazení pro lepší zarovnání */
+        margin: 0.5rem 0; /* Přidáme svislý odstup mezi prvky */
+    }
+}
+/* Kontejner pro formuláře */
+.form-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.form-container h1 {
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.form-container input,
+.form-container select,
+.form-container button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-container input:focus,
+.form-container select:focus {
+    border-color: #27ae60;
+    outline: none;
+}
+
+.form-container button {
+    background-color: #27ae60;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #219150;
+}
+
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.menu-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.restaurant-banner {
+    max-width: 300px;
+    margin: 1rem auto;
+    border-radius: 10px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Sloupce se přizpůsobí dostupné šířce */
+    gap: 1.5rem; /* Mezera mezi kartami */
+    margin: 2rem auto; /* Automatické vertikální vycentrování */
+    width: 90%; /* Šířka zabírá 90 % obrazovky */
+    max-width: 1200px; /* Maximální šířka gridu */
+}
+
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.menu-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.menu-details {
+    text-align: center;
+}
+
+.menu-details h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-details p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.menu-quantity {
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.menu-add-button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-add-button:hover {
+    background-color: #219150;
+}
+
+.restaurant-card h2 {
+    font-size: 1.5rem;
+    color: #27ae60;
+    margin-bottom: 0.5rem;
+}
+
+.restaurant-card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.restaurants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Základní nastavení pro desktop */
+    gap: 2rem;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Media query pro mobilní verzi */
+@media (max-width: 768px) {
+    .restaurants-grid {
+        grid-template-columns: 1fr; /* Jeden sloupec na menších obrazovkách */
+    }
+}
+
+
+
+.restaurant-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.restaurant-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.restaurant-info {
+    padding: 1rem;
+    text-align: left;
+}
+
+.restaurant-info h2 {
+    font-size: 1.5rem;
+    color: #27ae60;
+    margin-bottom: 0.5rem;
+}
+
+.restaurant-info p {
+    font-size: 1rem;
+    color: #666;
+}
+
+
+.restaurant-info h2 {
+    font-size: 1.5rem;
+    color: #27ae60;
+    margin-bottom: 0.5rem;
+}
+.restaurant-info p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Položky menu se přizpůsobí šířce obrazovky */
+    gap: 1.5rem;
+    margin: 2rem auto;
+    width: 90%;
+    max-width: 1300px;
+}
+
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.menu-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.menu-item h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.menu-item p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.menu-item form button {
+    background-color: #27ae60;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item form button:hover {
+    background-color: #219150;
+}
+
+
+/* Mobilní verze */
+@media (max-width: 768px) {
+    .menu-grid {
+        grid-template-columns: 1fr; /* Na mobilu bude 1 sloupec */
+    }
+}
+
+
+/* Hlavní obsah */
+main {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.flexbox {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    width: 280px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flexbox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Formuláře */
+form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: bold;
+}
+
+form input, form textarea, form button {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form input:focus, form textarea:focus {
+    border-color: #27ae60;
+    outline: none;
+}
+
+form button {
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #219150; /* Tmavší zelená */
+}
+
+/* Patička */
+footer {
+    text-align: center;
+    background-color: #fff;
+    color: #666;
+    padding: 1rem 0;
+    margin-top: auto;
+    border-top: 2px solid #ddd;
+}
+
+/* Responsivita */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #fff;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .flex-container {
+        flex-direction: column;
+    }
+}
+/* Pro mobilní zařízení: skrytí obrázku */
+@media (max-width: 768px) {
+    .main-section .image {
+        display: none; /* Skryjeme celý pravý sloupec */
+    }
+
+    .main-section {
+        flex-direction: column; /* Sloupce nad sebou */
+        padding: 2rem; /* Přizpůsobené odsazení */
+    }
+
+    .main-section .content {
+        text-align: center; /* Zarovnání textu na střed */
+    }
+}
+/* Přizpůsobení mobilní verze */
+@media (max-width: 768px) {
+    .main-section {
+        flex-direction: column; /* Sloupce nad sebou */
+        padding: 2rem 1rem; /* Menší horizontální odsazení */
+    }
+
+    .main-section .content {
+        max-width: 100%; /* Text zabere celou šířku */
+        text-align: center; /* Zarovnání textu na střed */
+    }
+
+    .main-section h1 {
+        font-size: 2rem; /* Menší nadpis pro mobil */
+        margin-bottom: 1rem;
+    }
+
+    .main-section p {
+        font-size: 1.1rem; /* Menší text pro mobil */
+        margin-bottom: 1.5rem;
+    }
+
+    .main-section .search-container {
+        flex-direction: column; /* Vertikální zarovnání vyhledávacího pole */
+        gap: 0.5rem; /* Menší mezera mezi prvky */
+        align-items: center;
+    }
+
+    .main-section input[type="text"] {
+        width: 90%; /* Širší vyhledávací pole na mobilu */
+    }
+
+    .main-section button {
+        width: 90%; /* Tlačítko zabere stejnou šířku jako input */
+    }
+
+    .main-section .image {
+        display: none; /* Skryjeme obrázek */
+    }
+}
+
+
+/* Kontejner košíku */
+#cart-container {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Nadpis košíku */
+#cart-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Seznam položek */
+#cart-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+}
+
+/* Jednotlivé položky */
+.cart-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Obrázek jídla */
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+/* Detaily položky */
+.cart-item-details {
+    flex: 3;
+    font-size: 1.1rem;
+    text-align: left;
+    color: #333;
+}
+
+/* Cena */
+.cart-item-price {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+/* Formuláře pro množství */
+.cart-item-form {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+/* Pole pro množství */
+.cart-item-quantity {
+    width: 60px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0.3rem;
+}
+
+/* Tlačítko aktualizace */
+.cart-update-button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.cart-update-button:hover {
+    background-color: #219150;
+}
+
+/* Tlačítko odstranění */
+.cart-remove-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.cart-remove-button:hover {
+    background-color: darkred;
+}
+
+/* Formulář pro odeslání objednávky */
+#cart-checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+/* Vstupy formuláře */
+.cart-input {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Tlačítko odeslání */
+.cart-submit-button {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-submit-button:hover {
+    background-color: #219150;
+}
+
+/* Zarovnání prvků uvnitř položky */
+.cart-item > * {
+    margin: 0 0.5rem;
+}
+
+/* Stylování pro stránku správy poslíčků */
+
+#courier-management-page {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+.dashboard-section {
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.admin-table th, .admin-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-table th {
+    background-color: #f3f3f3;
+    color: #333;
+    font-weight: bold;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.admin-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Tlačítko pro přidání poslíčka */
+.btn-add {
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+    background-color: #4cae4c;
+}
+
+/* Tlačítko pro smazání poslíčka */
+.btn-delete {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #c9302c;
+}
+
+/* Stylování formuláře pro přidání poslíčků */
+#add-courier-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#add-courier-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+#add-courier-form label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+#add-courier-form input {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#add-courier-form input:focus {
+    border-color: #0275d8;
+    outline: none;
+}
+
+/* Responzivní stylování pro mobily */
+@media (max-width: 768px) {
+    .admin-table {
+        display: block;
+        width: 100%;
+    }
+
+    .admin-table thead {
+        display: none;
+    }
+
+    .admin-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .admin-table td {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+
+    .admin-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 40%;
+    }
+
+    .admin-table td:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Stylování pro stránku admin dashboard */
+#admin-dashboard-page {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#admin-dashboard-page .page-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+}
+
+#admin-dashboard-page .dashboard-section {
+    margin-bottom: 2rem;
+}
+
+#admin-dashboard-page .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+#admin-dashboard-page .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#admin-dashboard-page .admin-table th, #admin-dashboard-page .admin-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#admin-dashboard-page .admin-table th {
+    background-color: #f3f3f3;
+    color: #333;
+    font-weight: bold;
+}
+
+#admin-dashboard-page .admin-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+#admin-dashboard-page .admin-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#admin-dashboard-page .admin-actions button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#admin-dashboard-page .btn-view {
+    background-color: #5bc0de;
+    color: #fff;
+}
+
+#admin-dashboard-page .btn-view:hover {
+    background-color: #31b0d5;
+}
+
+#admin-dashboard-page .btn-edit {
+    background-color: #0275d8;
+    color: #fff;
+}
+
+#admin-dashboard-page .btn-edit:hover {
+    background-color: #025aa5;
+}
+
+#admin-dashboard-page .btn-delete {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+#admin-dashboard-page .btn-delete:hover {
+    background-color: #c9302c;
+}
+
+/* Responzivní verze pro mobilní zařízení */
+@media (max-width: 768px) {
+    #admin-dashboard-page .admin-table {
+        display: block;
+        width: 100%;
+    }
+
+    #admin-dashboard-page .admin-table thead {
+        display: none;
+    }
+
+    #admin-dashboard-page .admin-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #admin-dashboard-page .admin-table td {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        text-align: left;
+    }
+
+    #admin-dashboard-page .admin-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 40%;
+    }
+
+    #admin-dashboard-page .admin-table td:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+
+
+/* Stylování pro admin-orders-page */
+#admin-orders-page {
+    width: 90%;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.orders-table th, .orders-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.orders-table th {
+    background-color: #f3f3f3;
+    color: #333;
+    font-weight: bold;
+}
+
+.orders-table tr:last-child td {
+    border-bottom: none;
+}
+
+.orders-table .btn-update-status {
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.orders-table .btn-update-status:hover {
+    background-color: #4cae4c;
+}
+
+.orders-table .btn-delete {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.orders-table .btn-delete:hover {
+    background-color: #c9302c;
+}
+
+/* Responzivní úpravy pro mobilní zařízení */
+@media (max-width: 768px) {
+    #admin-orders-page .admin-orders-table {
+        display: block;
+        width: 100%;
+    }
+
+    #admin-orders-page .admin-orders-table thead {
+        display: none;
+    }
+
+    #admin-orders-page .admin-orders-table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #admin-orders-page .admin-orders-table td {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+    }
+
+    #admin-orders-page .admin-orders-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        flex-basis: 40%;
+    }
+}

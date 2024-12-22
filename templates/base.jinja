@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Rozvoz Jídel{% endblock %}</title>
+
+    <!-- Odkaz na CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Hlavička stránky -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Rozvoz</h1>
+            </div>
+            <div class="hamburger" id="hamburger">
+    <img src="{{ url_for('static', filename='images/burger.png') }}" alt="menu" style="width: 50px; height: 50px;">
+</div>
+<ul id="nav-menu">
+     <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('menu') }}">Menu</a></li>
+        {% if session.get('user') %}
+            {% if session.get('user')['role'] == 'admin' %}
+                <li><a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></li>
+                <li><a href="{{ url_for('manage_couriers') }}">Správa Poslíčků</a></li>
+                <li><a href="{{ url_for('manage_orders') }}">Přehled Objednávek</a></li>
+            {% endif %}
+            {% if session.get('user')['role'] == 'customer' %}
+                <li><a href="{{ url_for('cart') }}">Košík</a></li>
+            {% endif %}
+            {% if session.get('user')['role'] == 'restaurant' %}
+                <li><a href="{{ url_for('manage_restaurant') }}">Správa jídel</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('logout') }}">Odhlásit se</a></li>
+            <li><a href="#">{{ session.get('user')['username'] }}</a></li>
+        {% else %}
+            <li><a href="{{ url_for('login') }}" class="login-button">Přihlášení</a></li>
+            <li><a href="{{ url_for('register') }}">Registrace</a></li>
+        {% endif %}
+</ul>
+
+
+</nav>
+
+</ul>
+
+
+        </nav>
+    </header>
+
+    <!-- Hlavní obsah stránky -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Patička stránky -->
+    <footer>
+        <p>© 2024 Rozvoz Jídel. All rights reserved.</p>
+    </footer>
+
+    <!-- Odkaz na JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

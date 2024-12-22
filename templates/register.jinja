@@ -1,0 +1,26 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Registrace</h1>
+    <form method="POST" action="{{ url_for('register') }}">
+        <label for="username">Uživatelské jméno</label>
+        <input type="text" id="username" name="username" placeholder="Zadejte uživatelské jméno" required />
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" placeholder="Zadejte e-mail" required />
+
+        <label for="password">Heslo</label>
+        <input type="password" id="password" name="password" placeholder="Zadejte heslo" required />
+
+        <label for="role">Vyberte roli</label>
+        <select id="role" name="role" required>
+            <option value="customer">Zákazník</option>
+            <option value="courier">Poslíček</option>
+            <option value="restaurant">Restaurace</option>
+        </select>
+
+        <button type="submit">Registrovat</button>
+    </form>
+</div>
+{% endblock %}

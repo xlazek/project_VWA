@@ -1,0 +1,57 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<div id="courier-management-page">
+    <h1 class="page-title">Správa Poslíčků</h1>
+
+    <div class="dashboard-section">
+        <h2 class="section-title">Seznam Poslíčků</h2>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Jméno</th>
+                    <th>Email</th>
+                    <th>Akce</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for courier in couriers %}
+                <tr>
+                    <td data-label="ID">{{ courier.id }}</td>
+                    <td data-label="Jméno">{{ courier.username }}</td>
+                    <td data-label="Email">{{ courier.email }}</td>
+                    <td data-label="Akce" class="admin-actions">
+                        <form method="POST" action="{{ url_for('manage_couriers') }}" class="delete-courier-form">
+                            <input type="hidden" name="courier_id" value="{{ courier.id }}">
+                            <button type="submit" name="delete_courier" class="btn-delete">Smazat</button>
+                        </form>
+
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="dashboard-section">
+        <h2 class="section-title">Přidat Nového Poslíčka</h2>
+        <form method="POST" id="add-courier-form">
+            <div class="form-group">
+                <label for="username">Jméno:</label>
+                <input type="text" id="username" name="username" placeholder="Jméno" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Heslo:</label>
+                <input type="password" id="password" name="password" placeholder="Heslo" required>
+            </div>
+            <button type="submit" name="add_courier" class="btn-add">Přidat Poslíčka</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

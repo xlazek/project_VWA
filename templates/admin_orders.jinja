@@ -1,0 +1,49 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<div id="admin-orders-page">
+    <h1 class="page-title">Správa objednávek</h1>
+
+    <table class="orders-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Zákazník</th>
+                <th>Jídlo</th>
+                <th>Cena</th>
+                <th>Datum</th>
+                <th>Stav</th>
+                <th>Akce</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td data-label="ID">{{ order.id }}</td>
+                <td data-label="Zákazník">{{ order.customer }}</td>
+                <td data-label="Jídlo">{{ order.food }}</td>
+                <td data-label="Cena">{{ order.price }} Kč</td>
+                <td data-label="Datum">{{ order.date }}</td>
+                <td data-label="Stav">
+                    <form method="POST" class="update-status-form">
+                        <input type="hidden" name="order_id" value="{{ order.id }}">
+                        <select name="status" class="order-status-select">
+                            <option value="pending" {% if order.status == 'pending' %}selected{% endif %}>Čekající</option>
+                            <option value="in_progress" {% if order.status == 'in_progress' %}selected{% endif %}>Probíhá</option>
+                            <option value="completed" {% if order.status == 'completed' %}selected{% endif %}>Dokončeno</option>
+                        </select>
+                        <button type="submit" class="btn-update-status">Aktualizovat</button>
+                    </form>
+                </td>
+                <td data-label="Akce">
+                    <form method="POST" class="delete-order-form">
+                        <input type="hidden" name="order_id" value="{{ order.id }}">
+                        <button type="submit" name="delete_order" class="btn-delete">Smazat</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
